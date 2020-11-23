@@ -1,5 +1,5 @@
-export default Header = () => {
+export default function Header() {
   return `
-    <h1>Header</h1>
+    <h1>Header1</h1>
   `
 }
