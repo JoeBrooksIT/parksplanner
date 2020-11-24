@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using ParksPlanner.Models;
-using ParksPlanner.Repositories;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -12,43 +10,35 @@ namespace ParksPlanner.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class NationalParksController : ControllerBase
+    public class ParksController : ControllerBase
     {
-            IRepository<NationalParks> nationalParksRepo;
-
-            public NationalParksController(IRepository<NationalParks> nationalParksRepo)
-            {
-                this.nationalParksRepo = nationalParksRepo;
-            }
-    }
-
-        // GET: api/<NationalParksController>
+        // GET: api/<ParksController>
         [HttpGet]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/<NationalParksController>/5
+        // GET api/<ParksController>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST api/<NationalParksController>
+        // POST api/<ParksController>
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
-        // PUT api/<NationalParksController>/5
+        // PUT api/<ParksController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/<NationalParksController>/5
+        // DELETE api/<ParksController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
