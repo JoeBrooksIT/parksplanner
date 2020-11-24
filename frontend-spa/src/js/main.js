@@ -3,10 +3,12 @@ const API_URL = `https://developer.nps.gov/api/v1/parks?api_key=${API_KEY}`
 
 import Header from "./components/Header"
 import Parks from "./components/Parks"
+import Footer from "./components/Footer"
 
 export default () => {
   header()
   getParks()
+  footer()
 }
 
 const main = document.querySelector(".main-content")
@@ -24,4 +26,9 @@ function getParks() {
       main.innerHTML = Parks(parks.data)
     })
     .catch(err => console.log(err))
+}
+
+function footer() {
+  const footer = document.querySelector(".footer")
+  footer.innerHTML = Footer()
 }
