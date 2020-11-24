@@ -1,5 +1,5 @@
 const API_KEY = "yLyZjsEKQn7yqwa5Ejn0yNBAxbH604yYhN95sMCs"
-const API_URL = `https://developer.nps.gov/api/v1/parks?&api_key=${API_KEY}`
+const API_URL = `https://developer.nps.gov/api/v1/parks?api_key=${API_KEY}`
 
 import Header from "./components/Header"
 import Parks from "./components/Parks"
@@ -18,9 +18,10 @@ function header() {
 
 function getParks() {
   fetch(API_URL)
-    .then(res => console.log(res.json()))
+    .then(res => res.json())
     .then(parks => {
-      main.innerHTML = Parks(parks)
+      console.log(parks)
+      main.innerHTML = Parks(parks.data)
     })
     .catch(err => console.log(err))
 }

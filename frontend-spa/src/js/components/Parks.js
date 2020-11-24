@@ -6,7 +6,7 @@ export default function Parks(parks) {
         .map(park => {
           return `
           <li>
-            <h4>${park.data}</h4>
+            <h4>${park.fullName}</h4>
           </li>
         `
         })
