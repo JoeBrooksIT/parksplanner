@@ -17,6 +17,7 @@ namespace ParksPlanner.Models
         public string Articles { get; set; }
         public string Peoples { get; set; }
         public string Places { get; set; }
+
         public virtual ICollection<NationalParks> NationalParks { get; set; }
 
     }

@@ -10,6 +10,7 @@ namespace ParksPlanner.Models
         public string Alert { get; set; }
         public string NewReleases { get; set; }
         public string Events { get; set; }
+        public int Id { get; set; }
 
         public virtual Parks Parks { get; set; }
     }
