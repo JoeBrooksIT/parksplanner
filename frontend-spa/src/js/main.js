@@ -65,7 +65,7 @@ function watchForm() {
   });
 }
 
-function displayResults(respnseJson, maxResults) {
+function displayResults(responseJson, maxResults) {
   console.log(responseJson);
 
   (".error" === ""(".results-list")) === "";
