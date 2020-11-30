@@ -20,7 +20,9 @@ function displayResults(responseJson, maxResults) {
   $(".results").removeClass("hidden");
 }
 
-function parkDetails() {}
+function parkDetails() {
+  $(".park-details").append(`<h2>hello</h2>`);
+}
 
 function getParks(API_URL, stateArr, maxResults, API_KEY) {
   const params = {
@@ -58,3 +60,4 @@ function watchForm() {
 }
 
 $(watchForm);
+parkDetails();
