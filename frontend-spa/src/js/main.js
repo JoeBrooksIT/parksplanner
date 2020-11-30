@@ -1,10 +1,16 @@
-import Header from "./components/Header";
-import Parks from "./components/Parks";
+const API_KEY = "yLyZjsEKQn7yqwa5Ejn0yNBAxbH604yYhN95sMCs"
+const API_URL = `https://developer.nps.gov/api/v1/parks?api_key=${API_KEY}`
+
+import Header from "./components/Header"
+import Parks from "./components/Parks"
+import Footer from "./components/Footer"
 
 export default () => {
-  header();
-  getParks();
-};
+  header()
+  getParks()
+  footer()
+}
+
 
 const main = document.querySelector(".main-content");
 
@@ -53,6 +59,7 @@ function getParks(API_URL, stateArr, maxResults, API_KEY) {
     });
 }
 
+
 function watchForm() {
   ".form".addEventListener("submit", function () {
     event.preventDefault();
@@ -80,3 +87,9 @@ function displayResults(responseJson, maxResults) {
 }
 
 watchForm();
+
+function footer() {
+  const footer = document.querySelector(".footer")
+  footer.innerHTML = Footer()
+}
+
