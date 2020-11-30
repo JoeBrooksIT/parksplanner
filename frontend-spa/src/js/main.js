@@ -1,24 +1,3 @@
-const API_KEY = "yLyZjsEKQn7yqwa5Ejn0yNBAxbH604yYhN95sMCs"
-const API_URL = `https://developer.nps.gov/api/v1/parks?api_key=${API_KEY}`
-
-import Header from "./components/Header"
-import Parks from "./components/Parks"
-import Footer from "./components/Footer"
-
-export default () => {
-  header()
-  getParks()
-  footer()
-}
-
-
-const main = document.querySelector(".main-content");
-
-function header() {
-  const header = document.querySelector(".header");
-  header.innerHTML = Header();
-}
-
 function formatQueryParams(params) {
   const queryItems = Object.keys(params).map(
     (key) => `${[encodeURIComponent(key)]}=${encodeURIComponent(params[key])}`
@@ -26,15 +5,20 @@ function formatQueryParams(params) {
   return queryItems.join("&");
 }
 
-// function getParks() {
-//   fetch(API_URL)
-//     .then(res => res.json())
-//     .then(parks => {
-//       console.log(parks)
-//       main.innerHTML = Parks(parks.data)
-//     })
-//     .catch(err => console.log(err))
-// }
+function displayResults(responseJson, maxResults) {
+  console.log(responseJson);
+
+  $(".error").empty();
+  $(".results-list").empty();
+
+  for (let i = 0; (i < responseJson.data.length) & (i < maxResults); i++) {
+    $(".results-list")
+      .append(`<li><h3><a href="${responseJson.data[i].url}">${responseJson.data[i].fullName}</a></h3>
+    <p>${responseJson.data[i].description}</p>
+    </li>`);
+  }
+  $(".results").removeClass("hidden");
+}
 
 function getParks(API_URL, stateArr, maxResults, API_KEY) {
   const params = {
@@ -55,41 +39,20 @@ function getParks(API_URL, stateArr, maxResults, API_KEY) {
     })
     .then((responseJson) => displayResults(responseJson, maxResults))
     .catch((err) => {
-      ".error".text(`Something went wrong: ${err.message}`);
+      $(".error").text(`Something went wrong: ${err.message}`);
     });
 }
 
-
 function watchForm() {
-  ".form".addEventListener("submit", function () {
+  $(".form").on("submit", function () {
     event.preventDefault();
     const API_URL = "https://developer.nps.gov/api/v1/parks";
-    const stateArr = ".state-entered".value().split(",");
-    const maxResults = ".result-amt".value();
+    const stateArr = $(".state-entered").val().split(",");
+    const maxResults = $(".result-amt").val();
 
     const API_KEY = "yLyZjsEKQn7yqwa5Ejn0yNBAxbH604yYhN95sMCs";
     getParks(API_URL, stateArr, maxResults, API_KEY);
   });
 }
 
-function displayResults(responseJson, maxResults) {
-  console.log(responseJson);
-
-  (".error" === ""(".results-list")) === "";
-
-  for (let i = 0; (i < responseJson.data.length) & (i < maxResults); i++) {
-    ".results-list"
-      .append(`<li><h3><a href="${responseJson.data[i].url}">${responseJson.data[i].fullName}</a></h3>
-    <p>{responseJson.data[i].description}</p>
-    </li>`);
-  }
-  ".results".removeClass("hidden");
-}
-
-watchForm();
-
-function footer() {
-  const footer = document.querySelector(".footer")
-  footer.innerHTML = Footer()
-}
-
+$(watchForm);

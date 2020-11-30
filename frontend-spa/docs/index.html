@@ -8,20 +8,29 @@
     <title>Parks Planner</title>
   </head>
   <body>
-    <div class="header"></div>
-    <div class="main-content"></div>
+    <header>
+      <h1>header</h1>
+    </header>
     <form class="form">
-      <label for="search-term"
-        >Enter one or more state abbreviation, seperated by comma:
-      </label>
+      <label for="search-term">Search by state abreviation: </label>
       <input type="text" name="search-term" class="state-entered" required />
       <label for="max-results">Max number of results to return: </label>
       <input type="number" name="max-results" class="result-amt" value="10" />
 
       <input type="submit" value="Go!" />
     </form>
-    <h2>hello</h2>
-    <div class="footer"></div>
+
+    <section class="results hidden" role="region">
+      <h2>Search results:</h2>
+      <ul class="results-list"></ul>
+    </section>
+    <footer>footer</footer>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.js"
+      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+      crossorigin="anonymous"
+    ></script>
     <script src="main.js"></script>
   </body>
 </html>
