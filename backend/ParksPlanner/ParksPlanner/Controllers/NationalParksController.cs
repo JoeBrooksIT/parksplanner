@@ -14,7 +14,7 @@ namespace ParksPlanner.Controllers
     [ApiController]
     public class NationalParksController : ControllerBase
     {
-            IRepository<NationalParks> nationalParksRepo;
+           private IRepository<NationalParks> nationalParksRepo;
 
             public NationalParksController(IRepository<NationalParks> nationalParksRepo)
             {
@@ -26,7 +26,7 @@ namespace ParksPlanner.Controllers
         [HttpGet]
         public IEnumerable<NationalParks> Get()
         {
-            return nationalParksRepos.GetAll();
+            return nationalParksRepo.GetAll();
         }
 
         // GET api/<NationalParksController>/5
@@ -38,20 +38,27 @@ namespace ParksPlanner.Controllers
 
         // POST api/<NationalParksController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IEnumerable<NationalParks> Post([FromBody] NationalParks nationalParks)
         {
+            nationalParksRepo.Create(nationalParks);
+            return nationalParksRepo.GetAll();
         }
 
         // PUT api/<NationalParksController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IEnumerable<NationalParks> Put(int id, [FromBody] NationalParks nationalParks)
         {
+            nationalParksRepo.Update(nationalParks);
+            return nationalParksRepo.GetAll();
         }
 
         // DELETE api/<NationalParksController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IEnumerable<NationalParks> Delete(int id)
         {
+            var nationalParks = nationalParksRepo.GetById(id);
+            nationalParksRepo.Delete(nationalParks);
+            return nationalParksRepo.GetAll();
         }
     }
 }

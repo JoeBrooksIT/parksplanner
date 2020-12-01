@@ -10,7 +10,7 @@ namespace ParksPlanner
 {
     public class ParksContext : DbContext
     {
-        public DbSet<Park> Park { get; set; }
+        public DbSet<Parks> Park { get; set; }
         public DbSet<NationalParks> NationalParks { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -24,47 +24,37 @@ namespace ParksPlanner
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Park>().HasData(
-                new Park()
+            modelBuilder.Entity<Parks>().HasData(
+                new Parks()
                 {
                     Id = 1,
-                    ParksId = 1,
-                    
+                    ParksId = 1, 
                 },
 
-                new Park()
+                new Parks()
                 {
                     Id = 2,
-                    ParksId = 2,
-                    
+                    ParksId = 2,   
                 },
 
-                new Park()
+                new Parks()
                 {
                     Id = 3,
-                    ParksId = 3,
-                    
+                    ParksId = 3,  
                 },
 
-                new Park()
+                new Parks()
                 {
                     Id = 4,
-                    ParksId = 4,
-                    
+                    ParksId = 4,    
                 },
 
-                new Park()
+                new Parks()
                 {
                     Id = 5,
                     ParksId = 5,
-                   
                 }
-
-                );
-                
-        }
-         
-           
-    }
-   
+                );      
+        }         
+    }  
 }
