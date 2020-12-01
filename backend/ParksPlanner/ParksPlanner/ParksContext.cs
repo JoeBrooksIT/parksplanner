@@ -10,8 +10,8 @@ namespace ParksPlanner
 {
     public class ParksContext : DbContext
     {
-        public DbSet<Parks> Park { get; set; }
-        public DbSet<NationalParks> NationalParks { get; set; }
+        //public DbSet<Parks> Park { get; set; }
+        //public DbSet<NationalParks> NationalParks { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

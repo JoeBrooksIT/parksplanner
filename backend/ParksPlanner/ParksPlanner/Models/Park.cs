@@ -9,6 +9,6 @@ namespace ParksPlanner.Models
     public class Park
     {
         public int Id { get; set; }
-        public int ParksId { get; set; }
+        public string ApiId { get; set; }
     }
 }
