@@ -10,8 +10,7 @@ namespace ParksPlanner
 {
     public class ParksContext : DbContext
     {
-        //public DbSet<Parks> Park { get; set; }
-        //public DbSet<NationalParks> NationalParks { get; set; }
+        public DbSet<Park> Park { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -28,7 +27,7 @@ namespace ParksPlanner
                 new Park()
                 {
                     Id = 1,
-                    ApiId = 1, 
+                    ApiId = "77E0D7F0-1942-494A-ACE2-9004D2BDC59E",
                 },
 
                 new Park()
