@@ -10,7 +10,7 @@ namespace ParksPlanner
 {
     public class ParksContext : DbContext
     {
-        public DbSet<Parks> Parks { get; set; }
+        public DbSet<Park> Park { get; set; }
         public DbSet<NationalParks> NationalParks { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -24,50 +24,40 @@ namespace ParksPlanner
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Parks>().HasData(
-                new Parks()
+            modelBuilder.Entity<Park>().HasData(
+                new Park()
                 {
                     Id = 1,
                     ParksId = 1,
-                    Name = "Zion",
-                    Description = "nonsenseText",
-                    Places = "Utah",
+                    
                 },
 
-                new Parks()
+                new Park()
                 {
                     Id = 2,
                     ParksId = 2,
-                    Name = "Grand Canyon",
-                    Description = "nonsenseText",
-                    Places = "Arizona",
+                    
                 },
 
-                new Parks()
+                new Park()
                 {
                     Id = 3,
                     ParksId = 3,
-                    Name = "Denali",
-                    Description = "nonsenseText",
-                    Places = "Alaska",
+                    
                 },
 
-                new Parks()
+                new Park()
                 {
                     Id = 4,
                     ParksId = 4,
-                    Name = "Redwood",
-                    Description = "nonsenseText",
-                    Places = "California",
+                    
                 },
 
-                new Parks()
+                new Park()
                 {
                     Id = 5,
                     ParksId = 5,
-                    Name = "Yellowstone",
-                    Description = "nonsenseText",
-                    Places = "Wyoming",
+                   
                 }
 
                 );
