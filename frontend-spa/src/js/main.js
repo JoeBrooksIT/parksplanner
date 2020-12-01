@@ -10,9 +10,7 @@ export default () => {
   displayFooter()
 }
 
-const resultsList = document.querySelector(".results-main")
-const results = document.querySelector(".results")
-const error = document.querySelector(".error")
+const resultsMain = document.querySelector(".results-main")
 
 function displayHeader() {
   const theHeader = document.querySelector(".header")
@@ -26,8 +24,7 @@ function displayForm() {
 }
 
 function displayResults() {
-  resultsList.innerHTML = Results()
-  displayingResults()
+  resultsMain.innerHTML = Results()
 }
 
 function displayFooter() {
@@ -43,17 +40,17 @@ function formatQueryParams(params) {
 }
 
 function displayingResults(responseJson, maxResults) {
+  const resultsList = document.querySelector(".results-list")
+  const results = document.querySelector(".results")
   console.log(responseJson)
 
-  // $(".error").empty()
-  // $(".results-list").empty()
-
   for (let i = 0; (i < responseJson.data.length) & (i < maxResults); i++) {
-    resultsList.append(`<li><h3><a href="${responseJson.data[i].url}>${responseJson.data[i].fullName}</a></h3>
-    <p>${responseJson.data[i].description}</p>
-    </li>`)
+    const liElement = document.createElement("li")
+    liElement.innerHTML = `<h3><a href="${responseJson.data[i].url}">${responseJson.data[i].fullName}</a></h3>
+    <p>${responseJson.data[i].description}</p>`
+    resultsList.appendChild(liElement)
   }
-  results.removeClass("hidden")
+  results.classList.remove("hidden")
 }
 
 function getParks(API_URL, stateArr, maxResults, API_KEY) {
@@ -75,7 +72,7 @@ function getParks(API_URL, stateArr, maxResults, API_KEY) {
     })
     .then(responseJson => displayingResults(responseJson, maxResults))
     .catch(err => {
-      // error.text(`Something went wrong: ${err.message}`)
+      console.log(err)
     })
 }
 
