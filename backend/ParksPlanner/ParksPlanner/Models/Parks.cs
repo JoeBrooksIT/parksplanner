@@ -8,6 +8,7 @@ namespace ParksPlanner.Models
     public class Parks
     {
         public int Id { get; set; }
+        public int ParksId { get; set; }
         public string Name { get; set; }
         public string Image { get; set; }
         public string CampGrounds { get; set; }
