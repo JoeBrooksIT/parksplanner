@@ -20,20 +20,20 @@ namespace ParksPlanner.Controllers
             {
                 this.nationalParksRepo = nationalParksRepo;
             }
-    }
+    
 
         // GET: api/<NationalParksController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<NationalParks> Get()
         {
-            return new string[] { "value1", "value2" };
+            return nationalParksRepos.GetAll();
         }
 
         // GET api/<NationalParksController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public NationalParks Get(int id)
         {
-            return "value";
+            return nationalParksRepo.GetById(id);
         }
 
         // POST api/<NationalParksController>
