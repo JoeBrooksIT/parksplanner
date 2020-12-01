@@ -24,35 +24,35 @@ namespace ParksPlanner
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Parks>().HasData(
-                new Parks()
+            modelBuilder.Entity<Park>().HasData(
+                new Park()
                 {
                     Id = 1,
-                    ParksId = 1, 
+                    ApiId = 1, 
                 },
 
-                new Parks()
+                new Park()
                 {
                     Id = 2,
-                    ParksId = 2,   
+                    ApiId = 2,   
                 },
 
-                new Parks()
+                new Park()
                 {
                     Id = 3,
-                    ParksId = 3,  
+                    ApiId = 3,  
                 },
 
-                new Parks()
+                new Park()
                 {
                     Id = 4,
-                    ParksId = 4,    
+                    ApiId = 4,    
                 },
 
-                new Parks()
+                new Park()
                 {
                     Id = 5,
-                    ParksId = 5,
+                    ApiId = 5,
                 }
                 );      
         }         
