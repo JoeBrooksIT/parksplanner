@@ -1,0 +1,8 @@
+body {
+  background-color: cornflowerblue;
+  color: #fff;
+}
+
+.hidden {
+  display: none;
+}

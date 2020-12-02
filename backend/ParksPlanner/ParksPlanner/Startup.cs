@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using ParksPlanner.Models;
+using ParksPlanner.Repositories;
 
 namespace ParksPlanner
 {
@@ -26,7 +28,11 @@ namespace ParksPlanner
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddDbContext<ParksContext>();
+            services.AddScoped<IRepository<Park>, ParkRepository>();
+
         }
+        
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
