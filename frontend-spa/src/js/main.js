@@ -2,6 +2,7 @@ import Form from "./components/Form"
 import Footer from "./components/Footer"
 import Header from "./components/Header"
 import Results from "./components/Results"
+import Park from "./components/Park"
 
 export default () => {
   displayHeader()
@@ -46,11 +47,21 @@ function displayingResults(responseJson, maxResults) {
 
   for (let i = 0; (i < responseJson.data.length) & (i < maxResults); i++) {
     const liElement = document.createElement("li")
-    liElement.innerHTML = `<h3><a href="${responseJson.data[i].url}">${responseJson.data[i].fullName}</a></h3>
+    // liElement.innerHTML = `<h3><a href="${responseJson.data[i].url}">${responseJson.data[i].fullName}</a></h3>
+    liElement.innerHTML = `<h3 class="list-item" id="${i}"> ${responseJson.data[i].fullName}</h3>
     <p>${responseJson.data[i].description}</p>`
     resultsList.appendChild(liElement)
   }
   results.classList.remove("hidden")
+
+  const listItems = document.querySelectorAll(".list-item")
+  listItems.forEach(element => {
+    element.addEventListener("click", () => {
+      const listIndex = parseInt(element.id)
+      console.log(`clicked index id: ${listIndex}`)
+      resultsMain.innerHTML = Park(responseJson.data[listIndex])
+    })
+  })
 }
 
 function getParks(API_URL, stateArr, maxResults, API_KEY) {
