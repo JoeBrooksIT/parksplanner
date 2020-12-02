@@ -14,9 +14,6 @@ namespace ParksPlanner.Repositories
         {
             db = context;
         }
-        public override IEnumerable<Park> GetAll()
-        {
-            return db.Park.Where(o => o.Id == id).FirstOrDefault();
-        }
+        
     }
 }

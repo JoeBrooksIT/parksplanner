@@ -33,25 +33,13 @@ namespace ParksPlanner
                 new Park()
                 {
                     Id = 2,
-                    ApiId = 2,   
+                    ApiId = "6DA17C86-088E-4B4D-B862-7C1BD5CF236B",   
                 },
 
                 new Park()
                 {
                     Id = 3,
-                    ApiId = 3,  
-                },
-
-                new Park()
-                {
-                    Id = 4,
-                    ApiId = 4,    
-                },
-
-                new Park()
-                {
-                    Id = 5,
-                    ApiId = 5,
+                    ApiId = "E4C7784E-66A0-4D44-87D0-3E072F5FEF43",  
                 }
                 );      
         }         
