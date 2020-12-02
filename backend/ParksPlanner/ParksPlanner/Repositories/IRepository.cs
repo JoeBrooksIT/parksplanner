@@ -8,10 +8,10 @@ namespace ParksPlanner.Repositories
     public interface IRepository<T> where T : class
     {
         IEnumerable<T> GetAll();
-        T GetById(int id);
-        //void Create(T entity);
-        //void Delete(T entity);
-        //void Update(T entity);
+        T GetById(int Id);
+        void Create(T entity);
+        void Delete(T entity);
+        void Update(T entity);
     }
 }
 
