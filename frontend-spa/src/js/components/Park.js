@@ -9,7 +9,14 @@ export default function Park(park) {
   <h4>${park.description}</h4>
   <h3>Weather</h3>
   <h4>${park.weatherInfo}</h4>
-  
+  <section class="image__container">${park.images
+    .map((image) => {
+      console.log(image.url);
+      return `
+    <img class="park__image" src="${image.url}">
+    `;
+    })
+    .join("")}
+    </section>
   `;
-  console.log(park.images[0].title);
 }
