@@ -6,3 +6,65 @@ body {
 .hidden {
   display: none;
 }
+
+.results {
+  text-align: center;
+  border: solid white;
+  padding: 11px;
+  background-color: orange;
+  border-radius: .25rem;
+}
+
+.results-list{
+  display: grid;
+  text-align: center;
+  border: solid white;
+  grid-template-columns: repeat(3, 1fr);
+  grid-row-gap: 3.5rem;
+  list-style-type: none;
+  background-color: green;
+  border-radius: .25rem;
+  
+}
+.results-main{
+  text-align: center;
+  grid-template-columns: repeat(3, 1fr);
+  grid-row-gap: 3.5rem;
+  background-color: red;
+  border-radius: .25rem;
+
+}
+.form{
+  text-align: center;
+}
+
+nav{
+  border: none;
+  border-radius: 0;
+  background-color: rgb(212, 8, 8);
+  height: 2px;
+  width: 4.5rem;
+  margin-top: 4rem;
+  text-align: center;
+  display: grid;
+  grid-template-columns: none;
+  grid-row: 1/-1;
+}
+
+.header{
+  margin-top: 2rem;
+  margin-bottom: 1em;
+  background: gray;
+  opacity: 60%;
+  font-size: 18px;
+  text-align: center;
+}
+
+.footer {
+  margin-top: 2rem;
+  margin-bottom: 1em;
+  background: gray;
+  opacity: 60%;
+  font-size: 10px;
+  text-align: center;
+}
