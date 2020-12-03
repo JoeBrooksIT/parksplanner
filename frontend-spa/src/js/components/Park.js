@@ -18,5 +18,9 @@ export default function Park(park) {
     })
     .join("")}
     </section>
+
+    <button class="add__favorite__button">Add to favorites</button>
+
+    
   `;
 }
