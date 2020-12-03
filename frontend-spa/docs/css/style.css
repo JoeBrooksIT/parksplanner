@@ -26,11 +26,18 @@ body {
   border-radius: .25rem;
   
 }
+.list-item-container{
+  border: solid white;
+  height: 20vh;
+  
+}
+
 .results-main{
   text-align: center;
   grid-template-columns: repeat(3, 1fr);
   grid-row-gap: 3.5rem;
   background-color: red;
+
   border-radius: .25rem;
 
 }

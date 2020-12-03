@@ -48,8 +48,8 @@ function displayingResults(responseJson, maxResults) {
   for (let i = 0; (i < responseJson.data.length) & (i < maxResults); i++) {
     const liElement = document.createElement("li");
     // liElement.innerHTML = `<h3><a href="${responseJson.data[i].url}">${responseJson.data[i].fullName}</a></h3>
-    liElement.innerHTML = `<h3 class="list-item" id="${i}"> ${responseJson.data[i].fullName}</h3>
-    <p>${responseJson.data[i].description}</p>`;
+    liElement.innerHTML = `<div class ="list-item-container"><h3 class="list-item" id="${i}"> ${responseJson.data[i].fullName}</h3>
+    <p>${responseJson.data[i].description}</p></div>`;
     resultsList.appendChild(liElement);
   }
   results.classList.remove("hidden");
