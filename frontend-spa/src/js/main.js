@@ -61,6 +61,7 @@ function displayingResults(responseJson, maxResults) {
       const listIndex = parseInt(element.id);
       console.log(`clicked index id: ${listIndex}`);
       resultsMain.innerHTML = Park(responseJson.data[listIndex]);
+      addPark();
     });
   });
 }
@@ -103,32 +104,48 @@ function watchForm() {
   });
 }
 
-function navListButton() {}
-
-function addPark() {
+function navListButton() {
   const appElement = document.querySelector(".results-main");
-  const addParkButton = document.querySelector(".add__favorite__button");
-  getParks(API_URL, stateArr, maxResults, API_KEY);
-  addParkButton.addEventListener("click", function () {
-    const parkId = addParkButton.id;
-    const listName = event.target.parentElement.querySelector(
-      ".user__info__container"
-    ).value;
-    console.log(`park id : ${parkId}, user list: ${listName}`);
-
-    const requestBody = {
-      Id: parkId,
-    };
-
+  const listElement = document.querySelector(".user__info__container");
+  listElement.addEventListener("click", function () {
     fetch(
-      `https://developer.nps.gov/api/v1/parks?&api_key=yLyZjsEKQn7yqwa5Ejn0yNBAxbH604yYhN95sMCs`
+      "https://developer.nps.gov/api/v1/parks?&api_key=yLyZjsEKQn7yqwa5Ejn0yNBAxbH604yYhN95sMCs"
     )
       .then((response) => response.json())
       .then((park) => {
         appElement.innerHTML = Park(park);
         addPark();
+        navListButton();
       })
       .catch((err) => console.log(err));
-    console.log(addParkButton);
+  });
+}
+
+function addPark() {
+  const appElement = document.querySelector(".results-main");
+  const addParkButton = document.querySelector(".add__favorite__button");
+  addParkButton.addEventListener("click", function () {
+    const parkId = addParkButton.id;
+    // const listName = event.target.parentElement.querySelector(
+    //   ".user__info__container"
+    // ).value;
+    console.log(`park id : ${parkId}`);
+
+    const requestBody = {
+      ApiId: parkId,
+    };
+
+    fetch(`https://localhost:44346/api/park`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestBody),
+    })
+      .then((response) => response.json())
+      .then((parks) => {
+        console.log(parks);
+      })
+      .catch((err) => console.log(err));
   });
 }
