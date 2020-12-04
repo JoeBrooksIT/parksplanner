@@ -17,6 +17,7 @@ const resultsMain = document.querySelector(".results-main");
 function displayHeader() {
   const theHeader = document.querySelector(".header");
   theHeader.innerHTML = Header();
+  navListButton();
 }
 
 function displayForm() {
@@ -109,20 +110,20 @@ function navList() {
   appElement.innerHTML = List();
 }
 
-// function navListButton() {
-//   const appElement = document.querySelector(".results-main");
-//   const listElement = document.querySelector(".user__info__container");
-//   listElement.addEventListener("click", function () {
-//     fetch(`https://localhost:44346/api/park/${parkId}`,
-//     )
-//       .then((response) => response.json())
-//       .then((park) => {
-//         appElement.innerHTML = Park(park);
-//         navListButton();
-//       })
-//       .catch((err) => console.log(err));
-//   });
-// }
+function navListButton() {
+  const appElement = document.querySelector(".results-main");
+  const listElement = document.querySelector(".nav__list");
+  listElement.addEventListener("click", function () {
+    console.log("click nav lists button");
+    fetch(`https://localhost:44346/api/park/`)
+      .then((response) => response.json())
+      .then((park) => {
+        appElement.innerHTML = Park(park);
+        navList();
+      })
+      .catch((err) => console.log(err));
+  });
+}
 
 function addPark() {
   const appElement = document.querySelector(".results-main");
