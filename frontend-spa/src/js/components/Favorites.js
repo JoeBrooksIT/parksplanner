@@ -7,7 +7,7 @@ export default function Favorites(parks) {
     .map((park) => {
       return `
       <li>
-      <p>${park.apiId}</p>
+      <p>${park.parkName}</p>
       <button class="user__delete__park" id="${park.id}">Remove from favorites</button>
       </li>
       `;

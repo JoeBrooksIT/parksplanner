@@ -138,7 +138,7 @@ function addPark() {
 
     const requestBody = {
       ApiId: parkId,
-      // ParkName: parkName
+      ParkName: parkName,
     };
 
     fetch(`https://localhost:44346/api/park`, {

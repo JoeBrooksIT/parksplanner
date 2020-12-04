@@ -28,18 +28,21 @@ namespace ParksPlanner
                 {
                     Id = 1,
                     ApiId = "77E0D7F0-1942-494A-ACE2-9004D2BDC59E",
+                    ParkName = "Abraham Lincoln Birthplace National Historical Park",
                 },
 
                 new Park()
                 {
                     Id = 2,
-                    ApiId = "6DA17C86-088E-4B4D-B862-7C1BD5CF236B",   
+                    ApiId = "6DA17C86-088E-4B4D-B862-7C1BD5CF236B",
+                    ParkName = "Acadia National Park",
                 },
 
                 new Park()
                 {
                     Id = 3,
-                    ApiId = "E4C7784E-66A0-4D44-87D0-3E072F5FEF43",  
+                    ApiId = "E4C7784E-66A0-4D44-87D0-3E072F5FEF43",
+                    ParkName = "Adams National Historical Park",
                 }
                 );      
         }         
