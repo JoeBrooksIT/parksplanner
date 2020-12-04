@@ -129,13 +129,16 @@ function addPark() {
   const addParkButton = document.querySelector(".add__favorite__button");
   addParkButton.addEventListener("click", function () {
     const parkId = addParkButton.id;
+    const parkName = appElement.querySelector(".park__name").innerHTML;
     // const listName = event.target.parentElement.querySelector(
     //   ".user__info__container"
     // ).value;
     console.log(`park id : ${parkId}`);
+    console.log(`park name : ${parkName}`);
 
     const requestBody = {
       ApiId: parkId,
+      // ParkName: parkName
     };
 
     fetch(`https://localhost:44346/api/park`, {
