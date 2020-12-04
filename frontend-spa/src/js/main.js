@@ -3,7 +3,7 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Results from "./components/Results";
 import Park from "./components/Park";
-import List from "./components/List";
+import Favorites from "./components/Favorites";
 
 export default () => {
   displayHeader();
@@ -105,10 +105,10 @@ function watchForm() {
   });
 }
 
-function navList() {
-  const appElement = document.querySelector(".app");
-  appElement.innerHTML = List();
-}
+// function navList() {
+//   const appElement = document.querySelector(".results-main");
+//   appElement.innerHTML = List();
+// }
 
 function navListButton() {
   const appElement = document.querySelector(".results-main");
@@ -117,9 +117,8 @@ function navListButton() {
     console.log("click nav lists button");
     fetch(`https://localhost:44346/api/park/`)
       .then((response) => response.json())
-      .then((park) => {
-        appElement.innerHTML = Park(park);
-        navList();
+      .then((parks) => {
+        appElement.innerHTML = Favorites(parks);
       })
       .catch((err) => console.log(err));
   });

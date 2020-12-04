@@ -1,0 +1,18 @@
+export default function Favorites(parks) {
+  console.log(parks);
+  return `
+  <h1>Favorites</h1>
+  <ol>
+  ${parks
+    .map((park) => {
+      return `
+      <li>
+      <p>${park.apiId}</p>
+      <button class="user__delete__park" id="${park.id}">Delete</button>
+      </li>
+      `;
+    })
+    .join("")}
+  </ol>
+  `;
+}
