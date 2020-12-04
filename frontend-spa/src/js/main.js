@@ -104,22 +104,25 @@ function watchForm() {
   });
 }
 
-function navListButton() {
-  const appElement = document.querySelector(".results-main");
-  const listElement = document.querySelector(".user__info__container");
-  listElement.addEventListener("click", function () {
-    fetch(
-      "https://developer.nps.gov/api/v1/parks?&api_key=yLyZjsEKQn7yqwa5Ejn0yNBAxbH604yYhN95sMCs"
-    )
-      .then((response) => response.json())
-      .then((park) => {
-        appElement.innerHTML = Park(park);
-        addPark();
-        navListButton();
-      })
-      .catch((err) => console.log(err));
-  });
+function navList() {
+  const appElement = document.querySelector(".app");
+  appElement.innerHTML = List();
 }
+
+// function navListButton() {
+//   const appElement = document.querySelector(".results-main");
+//   const listElement = document.querySelector(".user__info__container");
+//   listElement.addEventListener("click", function () {
+//     fetch(`https://localhost:44346/api/park/${parkId}`,
+//     )
+//       .then((response) => response.json())
+//       .then((park) => {
+//         appElement.innerHTML = Park(park);
+//         navListButton();
+//       })
+//       .catch((err) => console.log(err));
+//   });
+// }
 
 function addPark() {
   const appElement = document.querySelector(".results-main");
