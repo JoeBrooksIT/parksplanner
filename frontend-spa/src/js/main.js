@@ -3,7 +3,7 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Results from "./components/Results";
 import Park from "./components/Park";
-import List from "./components/List";
+import Favorites from "./components/Favorites";
 
 export default () => {
   displayHeader();
@@ -17,6 +17,7 @@ const resultsMain = document.querySelector(".results-main");
 function displayHeader() {
   const theHeader = document.querySelector(".header");
   theHeader.innerHTML = Header();
+  navListButton();
 }
 
 function displayForm() {
@@ -104,18 +105,20 @@ function watchForm() {
   });
 }
 
+// function navList() {
+//   const appElement = document.querySelector(".results-main");
+//   appElement.innerHTML = List();
+// }
+
 function navListButton() {
   const appElement = document.querySelector(".results-main");
-  const listElement = document.querySelector(".user__info__container");
+  const listElement = document.querySelector(".nav__list");
   listElement.addEventListener("click", function () {
-    fetch(
-      "https://developer.nps.gov/api/v1/parks?&api_key=yLyZjsEKQn7yqwa5Ejn0yNBAxbH604yYhN95sMCs"
-    )
+    console.log("click nav lists button");
+    fetch(`https://localhost:44346/api/park/`)
       .then((response) => response.json())
-      .then((park) => {
-        appElement.innerHTML = Park(park);
-        addPark();
-        navListButton();
+      .then((parks) => {
+        appElement.innerHTML = Favorites(parks);
       })
       .catch((err) => console.log(err));
   });
@@ -126,13 +129,16 @@ function addPark() {
   const addParkButton = document.querySelector(".add__favorite__button");
   addParkButton.addEventListener("click", function () {
     const parkId = addParkButton.id;
+    const parkName = appElement.querySelector(".park__name").innerHTML;
     // const listName = event.target.parentElement.querySelector(
     //   ".user__info__container"
     // ).value;
     console.log(`park id : ${parkId}`);
+    console.log(`park name : ${parkName}`);
 
     const requestBody = {
       ApiId: parkId,
+      ParkName: parkName,
     };
 
     fetch(`https://localhost:44346/api/park`, {

@@ -1,7 +1,7 @@
 export default function Park(park) {
   console.log(park);
   return `
-  <h4>${park.fullName}</h4>
+  <h4 class="park__name">${park.fullName}</h4>
   <h4>${park.states}</h4>
   <h3>Designation</h3>
   <h4>${park.designation}</h4>
@@ -17,11 +17,11 @@ export default function Park(park) {
     `;
     })
     .join("")}
-    </section>
+  </section>
 
-    <button class="add__favorite__button" id="${
-      park.id
-    }">Add to favorites</button>
+  <button class="add__favorite__button" id="${
+    park.id
+  }">Add to favorites</button>
 
     
   `;
