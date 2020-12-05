@@ -155,3 +155,28 @@ function addPark() {
       .catch((err) => console.log(err));
   });
 }
+
+function deletePark() {
+  const appElement = document.querySelector(".results-main");
+  const deleteParkButton = document.querySelector(".user__delete__park");
+  deleteParkButton.forEach((button) => {
+    button
+      .addEventListener("click", function () {
+        const parkId = button.parentElement.querySelector(".user__delete__park")
+          .value;
+        fetch(`https://localhost:44346/api/park/${parkId}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((response) => response.json())
+          .then((park) => {
+            appElement.innerHTML = Park(park);
+            deletePark();
+          })
+          .catch((err) => console.log(err));
+      })
+      .catch((err) => console.log(err));
+  });
+}
