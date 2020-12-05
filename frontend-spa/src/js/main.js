@@ -119,16 +119,36 @@ function navListButton() {
       .then((response) => response.json())
       .then((parks) => {
         appElement.innerHTML = Favorites(parks);
+        addFavoritePark();
       })
       .catch((err) => console.log(err));
   });
+}
+
+function addFavoritePark() {
+  const appElement = document.querySelectorAll(".favorites__name")
+  
+  appElement.forEach(element => {
+    element.addEventListener("click", function() {
+      const parkId = element.Id
+      console.log(`clicked parkId ${parkId}`)
+      fetch(`https://localhost:44346/api/park/${parkId}`)
+      .then(response => response.json())
+      .then(park => {
+        resultsMain.innerHTML = Favorites(park)
+        addPark();
+        deletePark();
+      })
+      .catch((err) => console.log(err))
+    })
+  })
 }
 
 function addPark() {
   const appElement = document.querySelector(".results-main");
   const addParkButton = document.querySelector(".add__favorite__button");
   addParkButton.addEventListener("click", function () {
-    const parkId = addParkButton.id;
+    const parkId = addParkButton.Id;
     const parkName = appElement.querySelector(".park__name").innerHTML;
     // const listName = event.target.parentElement.querySelector(
     //   ".user__info__container"
@@ -150,6 +170,7 @@ function addPark() {
     })
       .then((response) => response.json())
       .then((parks) => {
+        deletePark();
         console.log(parks);
       })
       .catch((err) => console.log(err));
@@ -159,23 +180,20 @@ function addPark() {
 function deletePark() {
   const appElement = document.querySelector(".results-main");
   const deleteParkButton = document.querySelector(".user__delete__park");
-  deleteParkButton.forEach((button) => {
-    button
-      .addEventListener("click", function () {
-        const parkId = button.parentElement.querySelector(".user__delete__park")
-          .value;
-        fetch(`https://localhost:44346/api/park/${parkId}`, {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
+  deleteParkButton.forEach(button => { 
+    button.addEventListener("click", function () { 
+      const parkId = button.parentElement.querySelector(".park__name").value;
+      fetch(`https://localhost:44346/api/park/${parkId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
         })
-          .then((response) => response.json())
-          .then((park) => {
-            appElement.innerHTML = Park(park);
-            deletePark();
-          })
-          .catch((err) => console.log(err));
+        .then((response) => response.json())
+        .then((park) => {
+          appElement.innerHTML = Park(park);
+        })
+        .catch((err) => console.log(err));
       })
       .catch((err) => console.log(err));
   });
