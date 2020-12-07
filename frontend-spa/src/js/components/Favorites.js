@@ -8,7 +8,7 @@ export default function Favorites(parks) {
       return `
       <li class="favorites__name">
         <p>${park.parkName}</p>
-        <button class="user__delete__park" id="${park.Id}">Remove from favorites</button>
+        <button class="user__delete__park" id="${park.id}">Remove from favorites</button>
       </li>
       `;
     })
