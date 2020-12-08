@@ -14,6 +14,11 @@ namespace ParksPlanner.Repositories
         {
             db = context;
         }
-        
+
+        public Park GetByApiId(string apiId)
+        {
+            return db.Park.Where(p => p.ApiId == apiId).FirstOrDefault();
+        }
+
     }
 }
