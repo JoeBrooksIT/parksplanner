@@ -38,9 +38,12 @@ namespace ParksPlanner.Controllers
 
         // POST api/<ParkController>
         [HttpPost]
-        public IEnumerable<Park> Post([FromBody] Park Park)
+        public IEnumerable<Park> Post([FromBody] Park park)
         {
-            ParkRepo.Create(Park);
+            if (ParkRepo.GetByApiId(park.ApiId) == null)
+            {
+                ParkRepo.Create(park);
+            }
             return ParkRepo.GetAll();
         }
 
