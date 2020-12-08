@@ -51,6 +51,17 @@ a {
   color: #fff;
 }
 
+/*Favorites Section =================================*/
+
+.fave-container {
+  display: flex;
+  justify-content: center;
+}
+
+.fave-container h2 {
+  display: flex;
+}
+
 /*Form Section =================================*/
 
 .fave-container {
