@@ -9,15 +9,21 @@ export default function Park(park) {
   <h4>${park.description}</h4>
   <h3>Weather</h3>
   <h4>${park.weatherInfo}</h4>
-  <section class="image__container">${park.images
-    .map((image) => {
-      console.log(image.url);
-      return `
-    <img class="park__image" src="${image.url}">
-    `;
-    })
-    .join("")}
-  </section>
+  <div class="container">
+    <div class="row">
+      <div class="one-third column">
+        <section class="image__container">${park.images
+          .map((image) => {
+            console.log(image.url);
+            return `
+          <img class="park__image" src="${image.url}">
+          `;
+          })
+          .join("")}
+        </section>
+      </div>
+    </div>
+  </div>
 
   <button class="add__favorite__button" id="${
     park.id
