@@ -11,7 +11,6 @@ export default function Park(park) {
   <h4>${park.weatherInfo}</h4>
   <div class="container">
     <div class="row">
-      <div class="one-third column">
         <section class="image__container">${park.images
           .map((image) => {
             console.log(image.url);
@@ -21,7 +20,6 @@ export default function Park(park) {
           })
           .join("")}
         </section>
-      </div>
     </div>
   </div>
 
