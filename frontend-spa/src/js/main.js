@@ -43,6 +43,7 @@ function formatQueryParams(params) {
 }
 
 function displayingResults(responseJson, maxResults) {
+  displayResults();
   const resultsList = document.querySelector(".results-list");
   resultsList.innerHTML = "";
   const results = document.querySelector(".results");
@@ -98,10 +99,13 @@ function watchForm() {
   const stateEntered = document.querySelector(".state-entered");
   const resultAmt = document.querySelector(".result-amt");
   form.addEventListener("submit", function () {
+    console.log("submit button pressed");
     event.preventDefault();
     const API_URL = "https://developer.nps.gov/api/v1/parks";
     const stateArr = stateEntered.value.split(",");
     const maxResults = resultAmt.value;
+    console.log(stateArr);
+    console.log(maxResults);
 
     const API_KEY = "yLyZjsEKQn7yqwa5Ejn0yNBAxbH604yYhN95sMCs";
     getParks(API_URL, stateArr, maxResults, API_KEY);
