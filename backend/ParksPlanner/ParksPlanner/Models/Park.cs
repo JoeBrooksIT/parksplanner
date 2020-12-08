@@ -12,5 +12,6 @@ namespace ParksPlanner.Models
         public int Id { get; set; }
         public string ApiId { get; set; }
         public string ParkName { get; set; }
+        public string TripDate { get; set; }
     }
 }
