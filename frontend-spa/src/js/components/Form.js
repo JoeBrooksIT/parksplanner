@@ -1,6 +1,9 @@
 export default function Form() {
   return `
-  <h3 class="nav__list">Favorites</h3>
+  <div class="container fave-container">
+    <button class="nav__list button-primary">Favorites</button>
+  </div>
+  
   <div class="form-container">
     <form class="form">
       <div>

@@ -51,11 +51,23 @@ a {
   color: #fff;
 }
 
-/*Form Section =================================*/
+/*Favorites Section =================================*/
 
-.nav__list {
+.fave-container {
   display: flex;
   justify-content: center;
+}
+
+.fave-container h2 {
+  display: flex;
+}
+
+/*Form Section =================================*/
+
+.fave-container {
+  display: flex;
+  justify-content: center;
+  padding: 3rem;
 }
 
 .form-container {
@@ -78,6 +90,30 @@ a {
   padding: 5rem;
   background-color: #89abe3ff;
   color: #fcf6f5ff;
+  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.7);
+}
+
+/*Park Section =================================*/
+
+.park-container {
+  padding: 2rem 0;
+}
+
+.image__container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding-top: 3rem;
+}
+
+.park__image {
+  height: 400px;
+  width: 400px;
+  object-fit: cover;
+  vertical-align: bottom;
+  padding: 1rem;
+  margin: 1rem;
+  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.4);
 }
 
 /*Footer Section =================================*/
