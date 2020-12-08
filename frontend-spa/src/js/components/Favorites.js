@@ -8,11 +8,18 @@ export default function Favorites(parks) {
       return `
       <li class="favorites__name">
         <p>${park.parkName}</p>
-        <button class="user__delete__park" id="${park.id}">Remove from favorites</button>
-      </li>
-      `;
+        <div class="date-container">
+          <form id="dateForm" class="form">
+            <div>
+              <label for="date-input">Date</label>
+              <input type="text" name="trip-date" id="${park.tripDate}"/>
+            </div>
+          </form>
+          <button class="user__delete__park" id="${park.id}">Remove from favorites</button>
+          </li>
+          `;
     })
     .join("")}
-  </ol>
+    </ol>
   `;
 }

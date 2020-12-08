@@ -145,6 +145,15 @@ function navListButton() {
 //   })
 // }
 
+function tripDate() {
+  const Date = document.getElementById("dateForm");
+  dateform.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        console.log("Date submitted")
+  })
+}
+
 function addPark() {
   const appElement = document.querySelector(".results-main")
   const addParkButton = document.querySelector(".add__favorite__button")
