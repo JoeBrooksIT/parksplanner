@@ -47,9 +47,6 @@ function displayingResults(responseJson, maxResults) {
   const resultsList = document.querySelector(".results-list");
   resultsList.innerHTML = "";
   const results = document.querySelector(".results");
-  console.log("displaying results");
-  console.log(responseJson);
-  console.log(maxResults);
 
   for (let i = 0; (i < responseJson.data.length) & (i < maxResults); i++) {
     const divElement = document.createElement("div");
@@ -64,7 +61,6 @@ function displayingResults(responseJson, maxResults) {
   listItems.forEach((element) => {
     element.addEventListener("click", () => {
       const listIndex = parseInt(element.id);
-      console.log(`clicked index id: ${listIndex}`);
       resultsMain.innerHTML = Park(responseJson.data[listIndex]);
       addPark();
     });
@@ -79,7 +75,6 @@ function getParks(API_URL, stateArr, maxResults, API_KEY) {
 
   const queryString = formatQueryParams(params);
   const url = API_URL + "?" + queryString + "&api_key=" + API_KEY;
-  console.log(url);
 
   fetch(url)
     .then((response) => {
@@ -104,53 +99,25 @@ function watchForm() {
     const API_URL = "https://developer.nps.gov/api/v1/parks";
     const stateArr = stateEntered.value.split(",");
     const maxResults = resultAmt.value;
-    console.log(stateArr);
-    console.log(maxResults);
 
     const API_KEY = "yLyZjsEKQn7yqwa5Ejn0yNBAxbH604yYhN95sMCs";
     getParks(API_URL, stateArr, maxResults, API_KEY);
   });
 }
 
-// function navList() {
-//   const appElement = document.querySelector(".results-main");
-//   appElement.innerHTML = List();
-// }
-
 function navListButton() {
   const appElement = document.querySelector(".results-main");
   const listElement = document.querySelector(".nav__list");
   listElement.addEventListener("click", function () {
-    console.log("click nav lists button");
     fetch(`https://localhost:44346/api/park/`)
       .then((response) => response.json())
       .then((parks) => {
         appElement.innerHTML = Favorites(parks);
         deletePark();
-        //addFavoritePark();
       })
       .catch((err) => console.log(err));
   });
 }
-
-// function addFavoritePark() {
-//   const appElement = document.querySelectorAll(".favorites__name")
-
-//   appElement.forEach(element => {
-//     element.addEventListener("click", function () {
-//       const parkId = element.Id
-//       console.log(`clicked parkId ${parkId}`)
-//       fetch(`https://localhost:44346/api/park/${parkId}`)
-//         .then(response => response.json())
-//         .then(park => {
-//           resultsMain.innerHTML = Favorites(park)
-//           addPark();
-//           deletePark();
-//         })
-//         .catch((err) => console.log(err))
-//     })
-//   })
-// }
 
 function addPark() {
   const appElement = document.querySelector(".results-main");
@@ -158,12 +125,6 @@ function addPark() {
   addParkButton.addEventListener("click", function () {
     const parkId = addParkButton.id;
     const parkName = appElement.querySelector(".park__name").innerHTML;
-    // const listName = event.target.parentElement.querySelector(
-    //   ".user__info__container"
-    // ).value;
-    console.log(`park id : ${parkId}`);
-    console.log(`park name : ${parkName}`);
-
     const requestBody = {
       ApiId: parkId,
       ParkName: parkName,
@@ -180,7 +141,6 @@ function addPark() {
       .then((parks) => {
         appElement.innerHTML = Favorites(parks);
         deletePark();
-        console.log(parks);
       })
       .catch((err) => console.log(err));
   });
@@ -192,7 +152,6 @@ function deletePark() {
   deleteParkButton.forEach((button) => {
     button.addEventListener("click", function () {
       const parkId = button.id;
-      console.log(`Delete button clicked, id = ${parkId}`);
       fetch(`https://localhost:44346/api/park/${parkId}`, {
         method: "DELETE",
         headers: {
