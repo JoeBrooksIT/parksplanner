@@ -1,7 +1,7 @@
 export default function Park(park) {
-  console.log(park)
+  console.log(park);
   return `
-  <div class="container">
+  <div class="container results-container">
     <h1 class="park__name"><strong>${park.fullName}</strong></h1>
     <div class="park-container">
       <h2>State:</h2>
@@ -22,14 +22,16 @@ export default function Park(park) {
     </div>
       <section class="image__container">
       ${park.images
-        .map(image => {
-          console.log(image.url)
+        .map((image) => {
+          console.log(image.url);
           return `
         <img class="park__image" src="${image.url}">
-        `
+        `;
         })
         .join("")}
       </section>
+      <a class="button back-to-top" href="#">Back To Top</a>
   </div>
-  `
+  
+  `;
 }

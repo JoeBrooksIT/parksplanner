@@ -7,7 +7,7 @@ export default function Favorites(parks) {
       .map((park) => {
         return `
         <li class="favorites__name">
-          <h2>${park.parkName}</h2>
+          <h2><strong>${park.parkName}</strong></h2>
           <div class="date-container">
               <div>
                 <label for="date-input">Date</label>

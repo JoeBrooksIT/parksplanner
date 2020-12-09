@@ -123,31 +123,31 @@ function navListButton() {
 // function tripDate() {
 //   const calendarDate = document.querySelectorAll("#dateInput");
 //   document.querySelectorAll(".dateForm").forEach(element =>{
-//       addEventListener("submit", () => { 
+//       addEventListener("submit", () => {
 //       console.log("submit button clicked")
 //       // e.preventDefault();
 //       console.log(element)
-//     })  
+//     })
 //   })
 // }
 
 function tripDate() {
-  console.log(document.querySelectorAll(".date-button"))
-  const dateButton = document.querySelectorAll(".date-button"); 
-  dateButton.forEach(element =>{
-      element.addEventListener("click", () => { 
+  console.log(document.querySelectorAll(".date-button"));
+  const dateButton = document.querySelectorAll(".date-button");
+  dateButton.forEach((element) => {
+    element.addEventListener("click", () => {
       const parkId = element.id;
       const tripDate = document.querySelector(`#dateInput-${element.id}`).value;
-      console.log(parkId)
-      console.log(tripDate)
-      
+      console.log(parkId);
+      console.log(tripDate);
+
       const requestBody = [
         {
           value: tripDate,
           path: "/tripDate",
-          op: "replace"
-        }
-      ]
+          op: "replace",
+        },
+      ];
 
       fetch(`https://localhost:44346/api/park/${parkId}`, {
         method: "PATCH",
@@ -156,18 +156,17 @@ function tripDate() {
         },
         body: JSON.stringify(requestBody),
       })
-      .then((response) => response.json())
-      .then((parks) => {
-        showFavoriteParks(parks);
-        console.log(parks)
-      })
-      .catch((err) => console.log(err));  
-
-    })  
-  })
+        .then((response) => response.json())
+        .then((parks) => {
+          showFavoriteParks(parks);
+          console.log(parks);
+        })
+        .catch((err) => console.log(err));
+    });
+  });
 }
 
-function showFavoriteParks(parks){
+function showFavoriteParks(parks) {
   const appElement = document.querySelector(".results-main");
   appElement.innerHTML = Favorites(parks);
   deletePark();
