@@ -1,10 +1,10 @@
 export default function Favorites(parks) {
-  console.log(parks)
+  console.log(parks);
   return `
   <div class="container fave-container">
     <ol>
     ${parks
-      .map(park => {
+      .map((park) => {
         return `
         <li class="favorites__name">
           <h2>${park.parkName}</h2>
@@ -13,15 +13,15 @@ export default function Favorites(parks) {
                 <label for="date-input">Date</label>
                 <input type="text" name="trip-date" id="dateInput-${park.id}" value="${park.tripDate}" />
               </div>
-              <input type="button" value="Submit Date" class="date-button" id="${park.id}">
+              <input type="button" value="Set Trip Date" class="date-button button-primary" id="${park.id}">
           </div> 
           <button class="user__delete__park" id="${park.id}">Remove from favorites</button>
         </li>
         <hr>
-        `
+        `;
       })
       .join("")}
     </ol>
   </div>
-  `
+  `;
 }

@@ -3,7 +3,6 @@ export default function Footer() {
   <footer class="footer-content">
     <h3>Thank you to the National Park Service!</h3>
     <p>Click <a href="https://www.nps.gov/index.htm" target="_blank">HERE</a> to see their site!</p>
-    <p>Some random filler content</p>
   </footer>
-  `
+  `;
 }
