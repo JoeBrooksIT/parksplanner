@@ -13,6 +13,10 @@ a {
   color: #fcf6f5ff;
 }
 
+ol {
+  list-style: none;
+}
+
 .main-container {
   background-color: #fcf6f5ff;
   max-width: 1500px !important;
@@ -23,12 +27,29 @@ a {
   display: none;
 }
 
+.button-primary {
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+}
+
+.button-primary:active {
+  transform: translateY(2px);
+}
+
+.back-to-top {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-top: 5rem;
+  align-items: center;
+}
+
 /*Header Section =================================*/
 
 .header {
   background: url(../img/bright.jpg) no-repeat center;
-  background-position-y: top;
-  height: 70vh;
+  background-position: center;
+  height: 40vh;
   position: relative;
 }
 
@@ -81,12 +102,18 @@ a {
   padding: 5rem;
 }
 
+.results-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .result-list-item {
   border: #fff 1px solid;
   padding: 5rem;
   background-color: #89abe3ff;
   color: #fcf6f5ff;
   box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.7);
+  cursor: pointer;
 }
 
 /*Park Section =================================*/
@@ -118,7 +145,7 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #7491c0;
+  background-color: #4c779b;
   padding: 5rem;
   color: #fcf6f5ff;
 }
