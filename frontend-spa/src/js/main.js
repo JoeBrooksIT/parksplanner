@@ -114,10 +114,34 @@ function navListButton() {
       .then((parks) => {
         appElement.innerHTML = Favorites(parks);
         deletePark();
+        tripDate();
       })
       .catch((err) => console.log(err));
   });
 }
+
+// function tripDate() {
+//   const calendarDate = document.querySelectorAll("#dateInput");
+//   document.querySelectorAll(".dateForm").forEach(element =>{
+//       addEventListener("submit", () => { 
+//       console.log("submit button clicked")
+//       // e.preventDefault();
+//       console.log(element)
+//     })  
+//   })
+// }
+
+function tripDate() {
+  const calendarDate = document.querySelectorAll("#dateInput");
+  console.log(document.querySelectorAll(".date-button"))
+  document.querySelectorAll(".date-button").forEach(element =>{
+      addEventListener("click", () => { 
+      // e.preventDefault();
+      console.log(element)
+    })  
+  })
+}
+
 
 function addPark() {
   const appElement = document.querySelector(".results-main");
@@ -141,6 +165,7 @@ function addPark() {
       .then((parks) => {
         appElement.innerHTML = Favorites(parks);
         deletePark();
+        tripDate();
       })
       .catch((err) => console.log(err));
   });
@@ -162,6 +187,7 @@ function deletePark() {
         .then((parks) => {
           appElement.innerHTML = Favorites(parks);
           deletePark();
+          tripDate();
         })
         .catch((err) => console.log(err));
     });

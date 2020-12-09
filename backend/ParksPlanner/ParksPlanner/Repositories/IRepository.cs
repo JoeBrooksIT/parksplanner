@@ -13,6 +13,7 @@ namespace ParksPlanner.Repositories
         void Delete(T entity);
         void Update(T entity);
         T GetByApiId(string Id);
+        void Save();
     }
 }
 
