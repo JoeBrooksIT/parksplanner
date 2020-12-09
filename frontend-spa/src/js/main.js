@@ -132,16 +132,47 @@ function navListButton() {
 // }
 
 function tripDate() {
-  const calendarDate = document.querySelectorAll("#dateInput");
   console.log(document.querySelectorAll(".date-button"))
-  document.querySelectorAll(".date-button").forEach(element =>{
-      addEventListener("click", () => { 
-      // e.preventDefault();
-      console.log(element)
+  const dateButton = document.querySelectorAll(".date-button"); 
+  dateButton.forEach(element =>{
+      element.addEventListener("click", () => { 
+      const parkId = element.id;
+      const tripDate = document.querySelector(`#dateInput-${element.id}`).value;
+      console.log(parkId)
+      console.log(tripDate)
+      
+      const requestBody = [
+        {
+          value: tripDate,
+          path: "/tripDate",
+          op: "replace"
+        }
+      ]
+
+      fetch(`https://localhost:44346/api/park/${parkId}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestBody),
+      })
+      .then((response) => response.json())
+      .then((parks) => {
+        showFavoriteParks(parks);
+        console.log(parks)
+      })
+      .catch((err) => console.log(err));  
+
     })  
   })
 }
 
+function showFavoriteParks(parks){
+  const appElement = document.querySelector(".results-main");
+  appElement.innerHTML = Favorites(parks);
+  deletePark();
+  tripDate();
+}
 
 function addPark() {
   const appElement = document.querySelector(".results-main");

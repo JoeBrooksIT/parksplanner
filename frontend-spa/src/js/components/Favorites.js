@@ -11,9 +11,9 @@ export default function Favorites(parks) {
           <div class="date-container">
               <div>
                 <label for="date-input">Date</label>
-                <input type="text" name="trip-date" id="dateInput" />
+                <input type="text" name="trip-date" id="dateInput-${park.id}" value="${park.tripDate}" />
               </div>
-              <input type="button" value="Submit Date" class="date-button">
+              <input type="button" value="Submit Date" class="date-button" id="${park.id}">
           </div> 
           <button class="user__delete__park" id="${park.id}">Remove from favorites</button>
         </li>
