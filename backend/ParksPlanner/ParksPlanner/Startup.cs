@@ -22,14 +22,32 @@ namespace ParksPlanner
             Configuration = configuration;
         }
 
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(); 
             services.AddDbContext<ParksContext>();
             services.AddScoped<IRepository<Park>, ParkRepository>();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins,
+                builder =>
+                {
+                    builder.WithOrigins("http://localhost:8080",
+                                        "https://localhost:8080")
+                                        .AllowAnyHeader()
+                                        .AllowAnyMethod();
+                    builder.WithOrigins("http://localhost:8081",
+                                        "https://localhost:8081")
+                                        .AllowAnyHeader()
+                                        .AllowAnyMethod();
+                });
+            });
 
         }
         
@@ -41,6 +59,8 @@ namespace ParksPlanner
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseHttpsRedirection();
 

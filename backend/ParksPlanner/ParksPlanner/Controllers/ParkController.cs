@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using ParksPlanner.Models;
 using ParksPlanner.Repositories;
@@ -14,13 +15,13 @@ namespace ParksPlanner.Controllers
     [ApiController]
     public class ParkController : ControllerBase
     {
-           private IRepository<Park> ParkRepo;
+        private IRepository<Park> ParkRepo;
 
-            public ParkController(IRepository<Park> ParkRepo)
-            {
-                this.ParkRepo = ParkRepo;
-            }
-    
+        public ParkController(IRepository<Park> ParkRepo)
+        {
+            this.ParkRepo = ParkRepo;
+        }
+
 
         // GET: api/<ParkController>
         [HttpGet]
@@ -38,9 +39,12 @@ namespace ParksPlanner.Controllers
 
         // POST api/<ParkController>
         [HttpPost]
-        public IEnumerable<Park> Post([FromBody] Park Park)
+        public IEnumerable<Park> Post([FromBody] Park park)
         {
-            ParkRepo.Create(Park);
+            if (ParkRepo.GetByApiId(park.ApiId) == null)
+            {
+                ParkRepo.Create(park);
+            }
             return ParkRepo.GetAll();
         }
 
@@ -49,6 +53,16 @@ namespace ParksPlanner.Controllers
         public IEnumerable<Park> Put(int id, [FromBody] Park Park)
         {
             ParkRepo.Update(Park);
+            return ParkRepo.GetAll();
+        }
+
+        // PATCH api/<ParkController>/5
+        [HttpPatch("{id}")]
+        public IEnumerable<Park> UpdateDateViaPatch(int id, [FromBody] JsonPatchDocument<Park> patchEntity)
+        {
+            var park = ParkRepo.GetById(id);
+            patchEntity.ApplyTo(park);
+            ParkRepo.Save();
             return ParkRepo.GetAll();
         }
 

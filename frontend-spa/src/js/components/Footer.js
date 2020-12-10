@@ -1,5 +1,8 @@
 export default function Footer() {
   return `
-    <h1>Footer Area</h1>
-  `
+  <footer class="footer-content">
+    <h3>Thank you to the National Park Service!</h3>
+    <p>Click <a href="https://www.nps.gov/index.htm" target="_blank">HERE</a> to see their site!</p>
+  </footer>
+  `;
 }

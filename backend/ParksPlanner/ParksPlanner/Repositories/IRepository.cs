@@ -12,6 +12,8 @@ namespace ParksPlanner.Repositories
         void Create(T entity);
         void Delete(T entity);
         void Update(T entity);
+        T GetByApiId(string Id);
+        void Save();
     }
 }
 

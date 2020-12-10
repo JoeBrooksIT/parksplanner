@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ParksPlanner;
 
 namespace ParksPlanner.Migrations
 {
     [DbContext(typeof(ParksContext))]
-    partial class ParksContextModelSnapshot : ModelSnapshot
+    [Migration("20201204200627_SecondMigration")]
+    partial class SecondMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,9 +33,6 @@ namespace ParksPlanner.Migrations
                     b.Property<string>("ParkName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TripDate")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.ToTable("Park");
@@ -43,22 +42,19 @@ namespace ParksPlanner.Migrations
                         {
                             Id = 1,
                             ApiId = "77E0D7F0-1942-494A-ACE2-9004D2BDC59E",
-                            ParkName = "Abraham Lincoln Birthplace National Historical Park",
-                            TripDate = "1/13/2021"
+                            ParkName = "Abraham Lincoln Birthplace National Historical Park"
                         },
                         new
                         {
                             Id = 2,
                             ApiId = "6DA17C86-088E-4B4D-B862-7C1BD5CF236B",
-                            ParkName = "Acadia National Park",
-                            TripDate = "4/6/2021"
+                            ParkName = "Acadia National Park"
                         },
                         new
                         {
                             Id = 3,
                             ApiId = "E4C7784E-66A0-4D44-87D0-3E072F5FEF43",
-                            ParkName = "Adams National Historical Park",
-                            TripDate = "11/11/2021"
+                            ParkName = "Adams National Historical Park"
                         });
                 });
 #pragma warning restore 612, 618

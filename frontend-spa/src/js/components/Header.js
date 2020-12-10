@@ -1,5 +1,9 @@
 export default function Header() {
   return `
-    <h1>Header Area</h1>
+    <header class="header">
+      <div class="header-content">
+        <h1>National Parks of America</h1>
+      </div>
+    </header>
   `
 }
