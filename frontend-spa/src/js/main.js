@@ -120,17 +120,6 @@ function navListButton() {
   });
 }
 
-// function tripDate() {
-//   const calendarDate = document.querySelectorAll("#dateInput");
-//   document.querySelectorAll(".dateForm").forEach(element =>{
-//       addEventListener("submit", () => {
-//       console.log("submit button clicked")
-//       // e.preventDefault();
-//       console.log(element)
-//     })
-//   })
-// }
-
 function tripDate() {
   console.log(document.querySelectorAll(".date-button"));
   const dateButton = document.querySelectorAll(".date-button");
